@@ -26,7 +26,7 @@ export default function Home() {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({messages}),
     });
 
     const data = await response.json();
