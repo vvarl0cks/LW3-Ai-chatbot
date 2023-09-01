@@ -10,9 +10,9 @@ const openai = new OpenAIApi(configuration);
 export async function POST(req: Request, res: NextResponse) {
   const body = await req.json();
 
-  const completion = await openai.createChatCompletion({
+const completion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    messages: body.messages,
+    messages: [{ role: "user", content: JSON.stringify(body.messages) }],
   });
   console.log(completion.data.choices[0].message);
   const theResponse = completion.data.choices[0].message;
